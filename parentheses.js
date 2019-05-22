@@ -1,5 +1,39 @@
 "use strict";
 
+/* -------------------------------------------------------------
+
+from: https://stackoverflow.com/questions/2422026/what-do-empty-parentheses-after-a-function-declaration-do-in-javascript
+
+(function () {}) creates an anonymous function.
+
+Adding the () to the end calls the function that was just created.
+
+See also:
+https://www.w3schools.com/js/js_function_invocation.asp
+
+---------------------------------------------------------------
+
+from: https://flaviocopes.com/javascript-iife/
+
+An Immediately-invoked Function Expression is a way to execute functions
+immediately, as soon as they are created. IIFEs are very useful because they
+don't pollute the global object, and they are a simple way to isolate variable
+declarations.
+
+2 forms:
+
+(function() {
+  // code here //
+})()
+
+(() => {
+  // code here //
+})()
+
+------------------------------------------------------------ */
+
+
+
 // basic function [N.B. does not work without '()']
 
 function basicFunction() {
@@ -193,3 +227,12 @@ console.log(x); // => 3
 // places, (perhaps just with different local vars for each instance), resulting
 // in no need to locate and understand a named function every time it is called.
 // This somewhat defeats the DRY principle, however.
+
+(function (x, y) {
+  console.log(x + y);
+}(3, 17)); // => 20
+
+// How to create a named function AND immediately call it (Note the 'return f;'):
+
+var func = (function f(a) { console.log(a); return f; })('Blammo') // => Blammo
+func('yoyo'); // => yoyo
