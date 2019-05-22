@@ -30,6 +30,9 @@ declarations.
   // code here //
 })()
 
+See also:
+https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6
+
 ------------------------------------------------------------ */
 
 
