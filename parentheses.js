@@ -4,7 +4,7 @@
 
 from: https://stackoverflow.com/questions/2422026/what-do-empty-parentheses-after-a-function-declaration-do-in-javascript
 
-(function () {}) creates an anonymous function.
+(function() {}) creates an anonymous function.
 
 Adding the () to the end calls the function that was just created.
 
@@ -39,15 +39,40 @@ https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoke
 
 // basic function [N.B. does not work without '()']
 
-function basicFunction() {
+function basicFunc() {
   console.log('this is a basic function');
 }
 
-basicFunction(); // => this is a basic function
+basicFunc(); // => this is a basic function
 
-// perhaps weirdly:
-basicFunction; // fails, with no error, even though:
-console.log(basicFunction); // => [Function: basicFunction]
+// perhaps weirdly (given an undefined name would throw 'somename is not defined' error):
+basicFunc; // => <fails, with no error, even though ...>
+console.log(basicFunc); // => [Function: basicFunction]
+
+basicFunc = 'basicFunc now with this string as value';
+
+console.log(basicFunc); // => basicFunc now with this string as value
+
+//basicFunc(); // => TypeError: basicFunc is not a function
+
+var arrowFunc = () => {
+  console.log('this is a basic arrow function');
+}
+
+arrowFunc(); // => this is a basic function
+
+console.log(arrowFunc); // => [Function: arrowFunc]
+
+arrowFunc = 'var now with this string as value';
+console.log(arrowFunc); // => var now with this string as value
+// above, will throw error if use 'const' not 'let' or 'var':
+// => TypeError: Assignment to constant variable.
+
+let something = function() {
+  console.log('I am something');
+};
+
+something(); // => I am something
 
 
 
@@ -55,7 +80,8 @@ console.log(basicFunction); // => [Function: basicFunction]
 // inline anonymous function
 
 (function() {
-    console.log('this is an inline anonymous function');
+  // code here will be run immediately
+  console.log('this is an inline anonymous function');
 })(); // => this is an inline anonymous function
 
 /* but, without surrounding parentheses, throws error:
@@ -84,6 +110,8 @@ console.log(n); // => 2
 let myFunction = function() { n++; }();
 
 console.log(n); // => 3
+
+console.log(myFunction); // => undefined
 
 // But, 'myFunction' cannot be declared again (in the same scope),
 // whereas the inline anonymous function can be used as many times as desired:
@@ -118,7 +146,7 @@ let g = function() { 888; }();
 console.log(g); // => undefined
 
 // i.e. Below, the code is still run, but it just does not help to define 'h':
-let h = function() { console.log('I run immediately'); }(); // => I run immediately
+const h = function() { console.log('I run immediately'); }(); // => I run immediately
 console.log(h); // => undefined
 
 let i = function() { console.log('I only run when called'); }
@@ -237,5 +265,5 @@ console.log(x); // => 3
 
 // How to create a named function AND immediately call it (Note the 'return f;'):
 
-var func = (function f(a) { console.log(a); return f; })('Blammo') // => Blammo
-func('yoyo'); // => yoyo
+const func = (function f(a) { console.log(a); return f; })('foo') // => foo
+func('bar'); // => bar
