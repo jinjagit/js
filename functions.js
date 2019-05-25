@@ -92,13 +92,13 @@ function basicFuncB() {
 basicFuncB; // No output and no error
 console.log(basicFuncB); // => [Function: basicFuncB]
 
-//someUndefinedName; // => ReferenceError: someUndefinedName is not defined ...
+someUndefinedName; // => ReferenceError: someUndefinedName is not defined ...
 
 /*
 
 We define a function and named it 'basicFunc'. More accurately, we create A
 VARIABLE, named 'basicFunc', and set its value to the function we define. We can
- see this is the case by setting our 'function name' to a new value;
+see this is the case by setting our 'function name' to a new value;
 
 */
 

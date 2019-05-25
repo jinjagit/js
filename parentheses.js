@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 /* -------------------------------------------------------------
 
@@ -32,6 +32,16 @@ declarations.
 
 See also:
 https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6
+
+------------------------------------------------------------
+
+arrow functions:
+
+https://medium.freecodecamp.org/when-and-why-you-should-use-es6-arrow-functions-and-when-you-shouldnt-3d851d7f0b26
+
+Understanding "this" in javascript with arrow functions
+https://www.codementor.io/dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc
+
 
 ------------------------------------------------------------ */
 
@@ -267,3 +277,57 @@ console.log(x); // => 3
 
 const func = (function f(a) { console.log(a); return f; })('foo') // => foo
 func('bar'); // => bar
+
+const arrow1 = () => console.log('I am an arrow function');
+
+arrow1();
+
+const errorTestC = (x, y) => {
+  z = x / y; // error is here: 'z' is not declared
+  return z
+}
+
+console.log(errorTestC);
+//errorTestC(2, 3);
+
+const halve = num => num / 2
+
+console.log(halve(5)); // => 2.5
+
+const output = string => console.log('hello')
+output('a');
+
+// ----------------------------------------- scope and 'this'
+
+var myMethod = () => {
+  console.log(this === window);
+}
+
+var myObject = {
+  a: myMethod
+}
+
+myObject.a(); // => true
+myMethod(); // => true
+
+// ------------------------------------
+
+var myMethod2 = function() {
+  console.log(this === window);
+}
+
+var myObject2 = {
+  a: myMethod
+}
+
+myObject2.a(); // => false
+myMethod2(); // => true
+
+
+
+
+
+
+
+const aaa = 6;
+aaa = 9;
