@@ -31,6 +31,8 @@ declarations.
 })()
 
 See also:
+
+Essential JavaScript: Mastering Immediately-invoked Function Expressions
 https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6
 
 ------------------------------------------------------------
